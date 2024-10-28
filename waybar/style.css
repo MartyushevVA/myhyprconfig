@@ -1,0 +1,158 @@
+
+/*dark 25 25 25 light 210 210 210*/
+
+@keyframes blink-warning {
+    70% {
+        color: white;
+    }
+    to {
+        color: white;
+        background-color: orange;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+        color: white;
+    }
+    to {
+        color: white;
+        background-color: red;
+    }
+}
+
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+window#waybar {
+    background-color: rgba(0,0,0,0);
+    font-family: IntelOneMonoNerdFont;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 16px;
+}
+
+#battery,
+#clock,
+#cpu,
+#custom-keyboard-layout,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#idle_inhibitor,
+#window {
+    padding: 0.25rem 0.75rem;
+    margin: 5px 5px 5px 5px;
+    color: black;
+    background-color: white;
+    border-radius: 16px;
+}
+
+#workspaces {
+    padding: 0.25rem 0.75rem;
+    margin: 5px 5px 5px 5px;
+    background-color: black;
+    border-radius: 16px;
+}
+#workspaces button {
+    border-radius: 16px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+    padding: 0rem 0.75rem;
+    color: black;
+    background-color: white;
+    border-radius: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+   color: rgb(255,0,0);
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning {
+    color: orange;
+}
+
+#battery.critical {
+    color: red;
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#cpu.warning {
+    color: orange;
+}
+
+#cpu.critical {
+    color: red;
+}
+
+#memory {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#memory.warning {
+    color: orange;
+}
+
+#memory.critical {
+    color: red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#mode {
+    border-bottom: 3px transparent;
+    color: black;
+    margin-left: 5px;
+    padding: 7px;
+}
+
+#network.disconnected {
+    color: orange;
+}
+
+#pulseaudio.muted {
+    color: #ff4499;
+}
+
+#pulseaudio.microphone.muted {
+    color: #ff4499;
+}
+
+#temperature.critical {
+    color: red;
+}
